@@ -3,112 +3,105 @@ package model;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class StudentDBTest {
-
-/*
-
-    @Test
-    void shouldMakeSureThatStudentsCanBeRetrieved() {
-        // given
-        Student[] students = {new Student( "Anna Abel",1), new Student("Bernd Benn",2)};
-        StudentDB studentDB = new StudentDB(students);
-
-        // when
-        Student[] actual = studentDB.getAllStudents();
-
-        // then
-        Assertions.assertArrayEquals(students, actual);
-
-        Assertions.assertEquals(1, actual[0].getId());
-        Assertions.assertEquals("Anna Abel", actual[0].getName());
-    }
-
-    @Test
-    void shouldReturnRandomStudent() {
-        // given
-        Student[] students = {new Student("Anna Abel",1), new Student("Bernd Benn",2)};
-        StudentDB studentDB = new StudentDB(students);
-
-        // when
-        Student student = studentDB.getRandomStudent();
-
-        // then
-        Assertions.assertNotNull(student);
-    }
-
-    @Test
-    void shouldReturnStringRepresentation() {
-        // given
-        Student[] students = {new Student("Anna Abel",1), new Student("Bernd Benn",2)};
-        StudentDB studentDB = new StudentDB(students);
-
-        // when
-        String actual = studentDB.toString();
-
-        // then
-        Assertions.assertEquals("StudentDB{studentDB=[Student{name='Anna Abel', age=22, id=1}, Student{name='Bernd Benn', age=22, id=2}]}", actual);
-    }
+    
 
     @Test
     void shouldAddNewStudent() {
         // given
-        Student[] students = {new Student("Anna Abel",1)};
-        StudentDB studentDB = new StudentDB(students);
+        Student heidi = new Student("Heidi", 1004);
+        Student horst = new Student("Horst", 1005);
+        Student inge = new Student("Inge", 1006);
+
+
+        StudentDB studentDB = new StudentDB();
+        studentDB.add(heidi);
+
 
         // when
-        studentDB.add(new Student("Bernd Benn",2));
-        Student[] actual = studentDB.getAllStudents();
+
+        studentDB.add(horst);
+        Map<Integer, Student> actual = studentDB.getStudentDB();
+
 
         // then
-        Student[] expected = {new Student("Anna Abel",1), new Student("Bernd Benn",2)};
-        Assertions.assertArrayEquals(expected, actual);
+
+        Map<Integer, Student> expected = new HashMap<>();
+        expected.put(1004, heidi);
+        expected.put(1005, horst);
+
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldRemoveFirstStudent() {
         // given
-        Student[] students = {new Student("Anna Abel",1), new Student("Bernd Benn",2)};
-        StudentDB studentDB = new StudentDB(students);
+        Student heidi = new Student("Heidi", 1004);
+        Student horst = new Student("Horst", 1005);
+        Student inge = new Student("Inge", 1006);
+        StudentDB studentDB = new StudentDB();
+        studentDB.add(heidi);
+        studentDB.add(horst);
+        studentDB.add(inge);
 
         // when
-        studentDB.remove( students[0]);
-        Student[] actual = studentDB.getAllStudents();
+        studentDB.remove(heidi);
+        Map<Integer, Student> actual = studentDB.getStudentDB();
 
         // then
-        Student[] expected = {new Student("Bernd Benn",2)};
-        Assertions.assertArrayEquals(expected, actual);
+        Map<Integer, Student> expected = new HashMap<>();
+        expected.put(1005, horst);
+        expected.put(1006, inge);
+
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldRemoveLastStudent() {
         // given
-        Student[] students = {new Student("Anna Abel",1), new Student("Bernd Benn",2)};
-        StudentDB studentDB = new StudentDB(students);
+        Student heidi = new Student("Heidi", 1004);
+        Student horst = new Student("Horst", 1005);
+        Student inge = new Student("Inge", 1006);
+        StudentDB studentDB = new StudentDB();
+        studentDB.add(heidi);
+        studentDB.add(horst);
+        studentDB.add(inge);
 
         // when
-        studentDB.remove(students[1]);
-        Student[] actual = studentDB.getAllStudents();
+        studentDB.remove(inge);
+        Map<Integer, Student> actual = studentDB.getStudentDB();
 
         // then
-        Student[] expected = {new Student("Anna Abel",1)};
-        Assertions.assertArrayEquals(expected, actual);
+        Map<Integer, Student> expected = new HashMap<>();
+        expected.put(1004, heidi);
+        expected.put(1005, horst);
+
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void shouldRemoveIntermediateStudent() {
         // given
-        Student[] students = {new Student("Anna Abel",1), new Student("Bernd Benn",2), new Student("Claus Chast",3)};
-        StudentDB studentDB = new StudentDB(students);
+        Student heidi = new Student("Heidi", 1004);
+        Student horst = new Student("Horst", 1005);
+        Student inge = new Student("Inge", 1006);
+        StudentDB studentDB = new StudentDB();
+        studentDB.add(heidi);
+        studentDB.add(horst);
+        studentDB.add(inge);
 
         // when
-        studentDB.remove(students[1]);
-        Student[] actual = studentDB.getAllStudents();
+        studentDB.remove(horst);
+        Map<Integer, Student> actual = studentDB.getStudentDB();
 
         // then
-        Student[] expected = {new Student("Anna Abel",1), new Student("Claus Chast",3)};
-        Assertions.assertArrayEquals(expected, actual);
+        Map<Integer, Student> expected = new HashMap<>();
+        expected.put(1004, heidi);
+        expected.put(1006, inge);
+
+        Assertions.assertEquals(expected, actual);
     }
-
-
- */
 }

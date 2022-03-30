@@ -1,36 +1,33 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class StudentDB {
 
-    protected ArrayList<Student> studentDB;
+    private Map<Integer, Student> studentDB;
 
     public StudentDB() {
-        studentDB = new ArrayList<Student> ();
-    }
-
-    public StudentDB(Student[] studentArray) {
-        studentDB = new ArrayList<Student>(Arrays.asList(studentArray));
+        studentDB = new HashMap<Integer, Student> ();
     }
 
     public void add(Student student) {
-        studentDB.add(student);
+        studentDB.put(student.getId(), student);
     }
 
     public void remove(Student student) {
-        studentDB.remove(student);
+        studentDB.remove(student.getId());
     }
 
-    public ArrayList<Student> getAllStudents() {
+    public Map<Integer, Student> getStudentDB() {
         return studentDB;
     }
 
-    public Student getRandomStudent() {
-        int random = (int) (Math.random()*(studentDB.size()-1));
-        return studentDB.get(random);
-    }
+//    public Student getRandomStudent() {
+//        int random = (int) (Math.random()*(studentDB.size()-1));
+//        return studentDB.get(random);
+//    }
 
     @Override
     public String toString() {
