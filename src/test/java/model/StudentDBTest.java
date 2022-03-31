@@ -7,15 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StudentDBTest {
-    
+
+    Student heidi = new Student("Heidi", 1004);
+    Student horst = new Student("Horst", 1005);
+    Student inge = new Student("Inge", 1006);
+
 
     @Test
     void shouldAddNewStudent() {
         // given
-        Student heidi = new Student("Heidi", 1004);
-        Student horst = new Student("Horst", 1005);
-        Student inge = new Student("Inge", 1006);
-
 
         StudentDB studentDB = new StudentDB();
         studentDB.add(heidi);
@@ -39,9 +39,7 @@ public class StudentDBTest {
     @Test
     void shouldRemoveFirstStudent() {
         // given
-        Student heidi = new Student("Heidi", 1004);
-        Student horst = new Student("Horst", 1005);
-        Student inge = new Student("Inge", 1006);
+
         StudentDB studentDB = new StudentDB();
         studentDB.add(heidi);
         studentDB.add(horst);
@@ -62,9 +60,7 @@ public class StudentDBTest {
     @Test
     void shouldRemoveLastStudent() {
         // given
-        Student heidi = new Student("Heidi", 1004);
-        Student horst = new Student("Horst", 1005);
-        Student inge = new Student("Inge", 1006);
+
         StudentDB studentDB = new StudentDB();
         studentDB.add(heidi);
         studentDB.add(horst);
@@ -85,9 +81,7 @@ public class StudentDBTest {
     @Test
     void shouldRemoveIntermediateStudent() {
         // given
-        Student heidi = new Student("Heidi", 1004);
-        Student horst = new Student("Horst", 1005);
-        Student inge = new Student("Inge", 1006);
+
         StudentDB studentDB = new StudentDB();
         studentDB.add(heidi);
         studentDB.add(horst);
